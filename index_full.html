@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>Репетитор по физике — пробное занятие</title>
+  <style>
+    .fp-page {
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      color: #111827;
+      background: #f3f4f6;
+      padding: 40px 16px 60px;
+      box-sizing: border-box;
+    }
+
+    .fp-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .fp-section {
+      padding: 60px 0;
+    }
+
+    .fp-section-alt {
+      background: #e5e7eb;
+      margin: 40px -16px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .fp-section h2 {
+      font-size: 28px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    /* HERO */
+    .fp-hero {
+      padding: 40px 0 40px;
+    }
+
+    .fp-hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 32px;
+      align-items: stretch;
+      flex-wrap: wrap;
+    }
+
+    .fp-hero-text {
+      flex: 1 1 320px;
+      min-width: 280px;
+    }
+
+    .fp-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .fp-hero h1 {
+      font-size: 30px;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .fp-hero-sub {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .fp-hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .fp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.08s ease, box-shadow 0.08s ease,
+        background 0.1s ease, border-color 0.1s ease;
+      white-space: nowrap;
+    }
+
+    .fp-btn-primary {
+      background: #1d4ed8;
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+    }
+
+    .fp-btn-primary:hover {
+      background: #1e40af;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+    }
+
+    .fp-btn-ghost {
+      background: transparent;
+      color: #1d4ed8;
+      border-color: #bfdbfe;
+    }
+
+    .fp-btn-ghost:hover {
+      background: #eff6ff;
+    }
+
+    .fp-btn-block {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .fp-hero-note {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 6px;
+    }
+
+    .fp-hero-card {
+      flex: 0 1 320px;
+      min-width: 280px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 20px 20px 18px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+      border: 1px solid #e5e7eb;
+    }
+
+    .fp-hero-card h3 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-size: 18px;
+    }
+
+    .fp-hero-card ul {
+      padding-left: 18px;
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* GRID & CARDS */
+    .fp-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .fp-grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .fp-grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .fp-grid-center {
+      align-items: flex-start;
+    }
+
+    .fp-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 20px 20px 18px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
+      font-size: 14px;
+    }
+
+    .fp-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+
+    .fp-card p {
+      margin: 0 0 8px;
+      line-height: 1.6;
+    }
+
+    .fp-card ul {
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.6;
+    }
+
+    .fp-card-light {
+      background: #f9fafb;
+      box-shadow: none;
+    }
+
+    /* FORM CARD */
+    .fp-card-form {
+      background: #111827;
+      color: #f9fafb;
+      border-color: #111827;
+    }
+
+    .fp-card-form h3 {
+      color: #f9fafb;
+    }
+
+    .fp-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .fp-form label {
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .fp-form input,
+    .fp-form textarea {
+      border-radius: 10px;
+      border: 1px solid #4b5563;
+      padding: 9px 10px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      background: #111827;
+      color: #f9fafb;
+    }
+
+    .fp-form input::placeholder,
+    .fp-form textarea::placeholder {
+      color: #6b7280;
+    }
+
+    .fp-form input:focus,
+    .fp-form textarea:focus {
+      border-color: #60a5fa;
+    }
+
+    .fp-form textarea {
+      resize: вертикальный;
+      min-height: 72px;
+    }
+
+    .fp-form .fp-btn-primary {
+      background: #f97316;
+      box-shadow: 0 10px 25px rgba(249, 115, 22, 0.35);
+      border-color: transparent;
+    }
+
+    .fp-form .fp-btn-primary:hover {
+      background: #ea580c;
+      box-shadow: 0 14px 30px rgba(249, 115, 22, 0.5);
+    }
+
+    .fp-form-note {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+
+    /* FOOTER */
+    .fp-footer {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid #e5e7eb;
+      text-align: center;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .fp-footer-sub {
+      margin-top: 4px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .fp-grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .fp-page {
+        padding: 24px 12px 40px;
+      }
+
+      .fp-section,
+      .fp-section-alt {
+        padding: 40px 0;
+        margin: 0 -12px 0;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .fp-hero-inner {
+        flex-direction: column;
+      }
+
+      .fp-hero h1 {
+        font-size: 24px;
+      }
+
+      .fp-section h2 {
+        font-size: 22px;
+      }
+
+      .fp-grid-2,
+      .fp-grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .fp-hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .fp-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="fp-page">
+    <!-- HERO -->
+    <section class="fp-hero">
+      <div class="fp-hero-inner">
+        <div class="fp-hero-text">
+          <div class="fp-badge">
+            Онлайн-репетитор по физике 7–9 классы
+          </div>
+          <h1>
+            Помогаю ребёнку понять физику и поднять оценку до уверенной «4» или
+            «5» за 8 недель
+          </h1>
+          <p class="fp-hero-sub">
+            Индивидуальные онлайн-занятия: закрываем пробелы, объясняю сложные
+            темы простым языком, даю структуру и постоянную поддержку.
+          </p>
+          <div class="fp-hero-cta">
+            <a href="#signup" class="fp-btn fp-btn-primary"
+              >Записаться на пробное занятие</a
+            >
+          </div>
+          <p class="fp-hero-note">
+            Пробное занятие онлайн, индивидуально • Для учеников 7–9 классов •
+            Осталось не более 5 мест
+          </p>
+        </div>
+        <div class="fp-hero-card">
+          <h3>Для кого эти занятия</h3>
+          <ul>
+            <li>Физика даётся тяжело, «плавают» базовые темы</li>
+            <li>Оценка держится на «3» и хочется стабильную «4» или «5»</li>
+            <li>Впереди ОГЭ и нужна системная подготовка</li>
+            <li>Родителю важно понимать, что происходит на уроках</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- далее блоки опущены для краткости -->
+    <footer class="fp-footer">
+      <div class="fp-container">
+        <p>Онлайн-репетитор по физике • 7–9 классы • Индивидуальные занятия</p>
+        <p class="fp-footer-sub">
+          Запись на пробное занятие онлайн. Количество мест ограничено.
+        </p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -104,7 +104,7 @@
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
       gap: 24px;
-      align-items: flex-start;
+      align-items: center;
     }
     .hero-preline {
       font-size: 13px;
@@ -154,54 +154,19 @@
       color: #9ca3af;
     }
 
-    .hero-sidecard {
-      background: radial-gradient(circle at top left,#0f172a,#020617);
+    /* HERO PHOTO */
+    .hero-photo {
+      display: flex;
+      justify-content: center;
+    }
+    .hero-photo img {
+      max-width: 260px;
+      width: 100%;
       border-radius: 20px;
-      padding: 18px 18px 16px;
-      border: 1px solid rgba(148,163,184,0.35);
-      box-shadow: 0 18px 40px rgba(15,23,42,0.76);
-      font-size: 14px;
+      border: 1px solid rgba(148,163,184,0.5);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.85);
+      object-fit: cover;
     }
-    .hero-sidecard-title {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      color: #9ca3af;
-      margin-bottom: 6px;
-    }
-    .hero-sidecard h2 { margin: 0 0 10px; font-size: 18px; }
-    .hero-metric-row { display:flex; gap:12px; margin-bottom:10px; font-size:13px; }
-    .hero-metric-pill {
-      flex:1;
-      border-radius:12px;
-      padding:8px 10px;
-      border:1px solid rgba(56,189,248,0.4);
-      background: radial-gradient(circle at top left,#0ea5e91a,#020617);
-    }
-    .hero-metric-pill strong {
-      display:block;
-      font-size:18px;
-      color:#38bdf8;
-    }
-    .hero-sidecard ul {
-      margin:8px 0 12px;
-      padding-left:18px;
-      color:#9ca3af;
-      line-height:1.6;
-    }
-    .hero-tagline {
-      font-size:12px;
-      color:#9ca3af;
-      border-top:1px solid rgba(148,163,184,0.25);
-      padding-top:8px;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .hero-tagline span { display:flex; align-items:center; gap:4px; }
-    .dot { width:6px; height:6px; border-radius:999px; background:#38bdf8; }
-    .dot-danger { background:#fb7185; }
 
     /* SECTIONS */
     .section { padding: 40px 0; }
@@ -312,7 +277,7 @@
     @media (max-width: 960px) {
       .hero-inner { grid-template-columns:minmax(0,1fr); }
       .nav-links { display:none; }
-      .nav-cta { display:inline-flex; }
+      .nav-cta { display:none; }
       .grid-3 { grid-template-columns:repeat(2,minmax(0,1fr)); }
     }
     @media (max-width: 720px) {
@@ -333,16 +298,16 @@
     <header class="nav">
       <div class="nav-inner">
         <div class="nav-brand">
-          <span class="nav-badge">Физика 7–9 классы</span>
-          <span>Онлайн-репетитор</span>
+          <span class="nav-badge">Егор Машанов</span>
+          <span>Онлайн репетитор</span>
         </div>
         <nav class="nav-links">
           <a href="#bonuses">Бонусы</a>
           <a href="#guarantee">Гарантии и результат</a>
           <a href="#who">Кому подойдёт</a>
-          <a href="#signup">Записаться сейчас</a>
+          <a href="#signup">Записаться</a>
         </nav>
-        <a href="#signup" class="btn btn-primary nav-cta">Записаться</a>
+        <!-- nav-cta убрали по твоей просьбе -->
       </div>
     </header>
 
@@ -377,29 +342,35 @@
             </p>
           </div>
 
-          <aside class="hero-sidecard">
-            <div class="hero-sidecard-title">Что волнует родителя</div>
-            <h2>Физика проседает, а времени до экзаменов меньше</h2>
-            <div class="hero-metric-row">
-              <div class="hero-metric-pill">
-                <strong>7–9 класс</strong>
-                Работаю и с базой, и с подготовкой к ОГЭ.
-              </div>
-              <div class="hero-metric-pill">
-                <strong>2×45 мин</strong>
-                Индивидуальных урока в неделю + мини-тесты и чат-поддержка.
-              </div>
-            </div>
+          <!-- ТВОЁ ФОТО -->
+          <div class="hero-photo">
+            <img src="personal_photo.jpg" alt="Егор Машанов — онлайн репетитор по физике">
+          </div>
+        </div>
+      </section>
+
+      <!-- ЧТО ВОЛНУЕТ РОДИТЕЛЯ (перенесли ниже) -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Для родителей</div>
+            <h2 class="section-title">Что волнует родителя</h2>
+            <p class="section-sub">
+              Когда оценки по физике падают, а впереди контрольные и ОГЭ, важно видеть понятный план действий.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Физика «проседает», а времени до экзаменов всё меньше</h3>
             <ul>
               <li>Ребёнок не понимает задачи и боится контрольных.</li>
               <li>Есть пропущенные темы, оценка держится на уровне «3».</li>
+              <li>Сложно понять, что именно повторять и с чего начать.</li>
               <li>Вы хотите видеть систему, прогресс и понимать, за что платите.</li>
             </ul>
-            <div class="hero-tagline">
-              <span><span class="dot"></span>Начинаем с диагностики знаний</span>
-              <span><span class="dot dot-danger"></span>Первое занятие — пробное</span>
-            </div>
-          </aside>
+            <p style="margin-top: 10px; color:#9ca3af;">
+              На пробном занятии я провожу простую диагностику, показываю слабые места и предлагаю понятный план на ближайшие недели.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -489,7 +460,7 @@
         </div>
       </section>
 
-      <!-- ЗАПИСАТЬСЯ СЕЙЧАС -->
+      <!-- ЗАПИСАТЬСЯ -->
       <section class="section" id="signup">
         <div class="container">
           <div class="section-header">
@@ -565,7 +536,7 @@
 
     <footer class="footer">
       <div class="container">
-        Онлайн-репетитор по физике • 7–9 классы • Индивидуальные занятия
+        Егор Машанов • Онлайн репетитор по физике • 7–9 классы
       </div>
     </footer>
   </div>

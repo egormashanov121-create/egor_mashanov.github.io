@@ -328,7 +328,6 @@
           <a href="#who">Кому подойдёт</a>
           <a href="#signup">Записаться</a>
         </nav>
-        <!-- nav-cta убрали по твоей просьбе -->
       </div>
     </header>
 
@@ -508,12 +507,11 @@
             <div class="form-card">
               <h3>Форма обратной связи</h3>
               <p>Укажите своё имя и телефон — я свяжусь с вами и предложу время пробного занятия.</p>
-              <!-- ЗАМЕНИТЕ youremail@example.com НА СВОЙ EMAIL -->
+              <!-- ВАЖНО: форма отправляет данные на Render -->
               <form
                 class="form"
-                action="mailto:youremail@example.com"
-                method="post"
-                enctype="text/plain"
+                action="https://physics-tg-bot-backend.onrender.com/submit"
+                method="POST"
               >
                 <label>
                   Имя

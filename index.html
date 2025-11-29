@@ -6,390 +6,426 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   />
-  <title>Репетитор по физике — пробное занятие</title>
+  <title>Репетитор по физике — пробное занятие онлайн</title>
   <style>
-    .fp-page {
-      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      color: #111827;
-      background: #f3f4f6;
-      padding: 40px 16px 60px;
+    :root {
+      --bg-main: #020617;
+      --bg-soft: #020617;
+      --bg-card: #020617;
+      --bg-alt: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --accent-strong: #0ea5e9;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --danger: #fb7185;
+    }
+
+    * {
       box-sizing: border-box;
     }
 
-    .fp-container {
-      max-width: 1100px;
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: radial-gradient(circle at top left, #0f172a 0, #020617 55%);
+      color: var(--text-main);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1120px;
       margin: 0 auto;
+      padding: 0 16px;
     }
 
-    .fp-section {
-      padding: 60px 0;
+    /* NAV */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.9),
+        rgba(15, 23, 42, 0.75)
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
     }
 
-    .fp-section-alt {
-      background: #e5e7eb;
-      margin: 40px -16px;
-      padding-left: 16px;
-      padding-right: 16px;
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      max-width: 1120px;
+      margin: 0 auto;
+      gap: 16px;
     }
 
-    .fp-section h2 {
-      font-size: 28px;
-      margin-bottom: 32px;
-      text-align: center;
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-badge {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding: 4px 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      display: none;
     }
 
     /* HERO */
-    .fp-hero {
-      padding: 40px 0 40px;
+
+    .hero {
+      padding: 40px 0 32px;
     }
 
-    .fp-hero-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      gap: 32px;
-      align-items: stretch;
-      flex-wrap: wrap;
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 24px;
+      align-items: start;
     }
 
-    .fp-hero-text {
-      flex: 1 1 320px;
-      min-width: 280px;
-    }
-
-    .fp-badge {
-      display: inline-block;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: #dbeafe;
-      color: #1d4ed8;
+    .hero-preline {
       font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 12px;
+      color: var(--accent);
+      margin-bottom: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .fp-hero h1 {
+    .hero-preline-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
       font-size: 30px;
       line-height: 1.25;
-      margin-bottom: 16px;
+      margin: 0 0 14px;
     }
 
-    .fp-hero-sub {
-      font-size: 16px;
+    .hero-sub {
+      font-size: 15px;
       line-height: 1.6;
-      margin-bottom: 20px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
     }
 
-    .fp-hero-cta {
+    .value-strip {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+      font-size: 13px;
+    }
+
+    .value-p {
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .value-p strong {
+      color: var(--accent);
+    }
+
+    .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
+      align-items: center;
       margin-bottom: 10px;
     }
 
-    .fp-btn {
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 22px;
+      padding: 11px 22px;
       border-radius: 999px;
-      font-size: 15px;
-      font-weight: 600;
       border: 1px solid transparent;
+      font-size: 14px;
+      font-weight: 600;
       text-decoration: none;
       cursor: pointer;
       transition: transform 0.08s ease, box-shadow 0.08s ease,
-        background 0.1s ease, border-color 0.1s ease;
+        background 0.1s ease, border-color 0.1s ease, color 0.1s ease;
       white-space: nowrap;
     }
 
-    .fp-btn-primary {
-      background: #1d4ed8;
-      color: #ffffff;
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+    .btn-primary {
+      background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+      color: #0b1120;
+      box-shadow: 0 18px 35px rgba(56, 189, 248, 0.32);
     }
 
-    .fp-btn-primary:hover {
-      background: #1e40af;
+    .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 22px 40px rgba(56, 189, 248, 0.45);
     }
 
-    .fp-btn-ghost {
-      background: transparent;
-      color: #1d4ed8;
-      border-color: #bfdbfe;
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.8);
     }
 
-    .fp-btn-ghost:hover {
-      background: #eff6ff;
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(15, 23, 42, 1);
     }
 
-    .fp-btn-block {
+    .btn-block {
       width: 100%;
       justify-content: center;
     }
 
-    .fp-hero-note {
-      font-size: 13px;
-      color: #6b7280;
-      margin-top: 6px;
+    .hero-note {
+      font-size: 12px;
+      color: var(--text-muted);
     }
 
-    .fp-hero-card {
-      flex: 0 1 320px;
-      min-width: 280px;
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 20px 20px 18px;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-      border: 1px solid #e5e7eb;
+    .hero-sidecard {
+      background: radial-gradient(circle at top left, #0f172a, #020617);
+      border-radius: 20px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.76);
     }
 
-    .fp-hero-card h3 {
-      margin-top: 0;
-      margin-bottom: 14px;
+    .hero-sidecard-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .hero-sidecard h2 {
+      margin: 0 0 10px;
       font-size: 18px;
     }
 
-    .fp-hero-card ul {
-      padding-left: 18px;
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    /* GRID & CARDS */
-    .fp-grid {
-      display: grid;
-      gap: 20px;
-    }
-
-    .fp-grid-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .fp-grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .fp-grid-center {
-      align-items: flex-start;
-    }
-
-    .fp-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 20px 20px 18px;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
-      border: 1px solid #e5e7eb;
-      font-size: 14px;
-    }
-
-    .fp-card h3 {
-      margin-top: 0;
+    .hero-metric-row {
+      display: flex;
+      gap: 12px;
       margin-bottom: 10px;
-      font-size: 17px;
-    }
-
-    .fp-card p {
-      margin: 0 0 8px;
-      line-height: 1.6;
-    }
-
-    .fp-card ul {
-      margin: 0;
-      padding-left: 18px;
-      line-height: 1.6;
-    }
-
-    .fp-card-light {
-      background: #f9fafb;
-      box-shadow: none;
-    }
-
-    /* FORM CARD */
-    .fp-card-form {
-      background: #111827;
-      color: #f9fafb;
-      border-color: #111827;
-    }
-
-    .fp-card-form h3 {
-      color: #f9fafb;
-    }
-
-    .fp-form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 6px;
-    }
-
-    .fp-form label {
       font-size: 13px;
+    }
+
+    .hero-metric-pill {
+      flex: 1;
+      border-radius: 12px;
+      padding: 8px 10px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      background: radial-gradient(circle at top left, #0ea5e91a, #020617);
+    }
+
+    .hero-metric-pill strong {
+      display: block;
+      font-size: 18px;
+      color: var(--accent);
+    }
+
+    .hero-sidecard ul {
+      margin: 8px 0 12px;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .hero-tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      padding-top: 8px;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero-tagline span {
+      display: flex;
+      align-items: center;
       gap: 4px;
     }
 
-    .fp-form input,
-    .fp-form textarea {
-      border-radius: 10px;
-      border: 1px solid #4b5563;
-      padding: 9px 10px;
-      font-size: 14px;
-      font-family: inherit;
-      outline: none;
-      background: #111827;
-      color: #f9fafb;
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
     }
 
-    .fp-form input::placeholder,
-    .fp-form textarea::placeholder {
-      color: #6b7280;
+    .dot-danger {
+      background: var(--danger);
     }
 
-    .fp-form input:focus,
-    .fp-form textarea:focus {
-      border-color: #60a5fa;
+    /* SECTIONS GENERIC */
+
+    .section {
+      padding: 40px 0;
     }
 
-    .fp-form textarea {
-      resize: вертикальный;
-      min-height: 72px;
+    .section-alt {
+      background: radial-gradient(circle at top right, #020617, #020617);
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
     }
 
-    .fp-form .fp-btn-primary {
-      background: #f97316;
-      box-shadow: 0 10px 25px rgba(249, 115, 22, 0.35);
-      border-color: transparent;
-    }
-
-    .fp-form .fp-btn-primary:hover {
-      background: #ea580c;
-      box-shadow: 0 14px 30px rgba(249, 115, 22, 0.5);
-    }
-
-    .fp-form-note {
-      font-size: 11px;
-      color: #9ca3af;
-      margin-top: 4px;
-    }
-
-    /* FOOTER */
-    .fp-footer {
-      margin-top: 20px;
-      padding-top: 18px;
-      border-top: 1px solid #e5e7eb;
+    .section-header {
       text-align: center;
-      font-size: 13px;
-      color: #6b7280;
+      margin-bottom: 26px;
     }
 
-    .fp-footer-sub {
-      margin-top: 4px;
+    .section-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 4px;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 960px) {
-      .fp-grid-3 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    .section-title {
+      margin: 0 0 6px;
+      font-size: 24px;
     }
 
-    @media (max-width: 768px) {
-      .fp-page {
-        padding: 24px 12px 40px;
-      }
-
-      .fp-section,
-      .fp-section-alt {
-        padding: 40px 0;
-        margin: 0 -12px 0;
-        padding-left: 12px;
-        padding-right: 12px;
-      }
-
-      .fp-hero-inner {
-        flex-direction: column;
-      }
-
-      .fp-hero h1 {
-        font-size: 24px;
-      }
-
-      .fp-section h2 {
-        font-size: 22px;
-      }
-
-      .fp-grid-2,
-      .fp-grid-3 {
-        grid-template-columns: minmax(0, 1fr);
-      }
+    .section-sub {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-muted);
     }
 
-    @media (max-width: 480px) {
-      .fp-hero-cta {
-        flex-direction: column;
-        align-items: stretch;
-      }
+    /* GRIDS & CARDS */
 
-      .fp-btn {
-        width: 100%;
-        justify-content: center;
-      }
+    .grid {
+      display: grid;
+      gap: 18px;
     }
-  </style>
-</head>
-<body>
-  <div class="fp-page">
-    <!-- HERO -->
-    <section class="fp-hero">
-      <div class="fp-hero-inner">
-        <div class="fp-hero-text">
-          <div class="fp-badge">
-            Онлайн-репетитор по физике 7–9 классы
-          </div>
-          <h1>
-            Помогаю ребёнку понять физику и поднять оценку до уверенной «4» или
-            «5» за 8 недель
-          </h1>
-          <p class="fp-hero-sub">
-            Индивидуальные онлайн-занятия: закрываем пробелы, объясняю сложные
-            темы простым языком, даю структуру и постоянную поддержку.
-          </p>
-          <div class="fp-hero-cta">
-            <a href="#signup" class="fp-btn fp-btn-primary"
-              >Записаться на пробное занятие</a
-            >
-          </div>
-          <p class="fp-hero-note">
-            Пробное занятие онлайн, индивидуально • Для учеников 7–9 классов •
-            Осталось не более 5 мест
-          </p>
-        </div>
-        <div class="fp-hero-card">
-          <h3>Для кого эти занятия</h3>
-          <ul>
-            <li>Физика даётся тяжело, «плавают» базовые темы</li>
-            <li>Оценка держится на «3» и хочется стабильную «4» или «5»</li>
-            <li>Впереди ОГЭ и нужна системная подготовка</li>
-            <li>Родителю важно понимать, что происходит на уроках</li>
-          </ul>
-        </div>
-      </div>
-    </section>
 
-    <!-- далее блоки опущены для краткости -->
-    <footer class="fp-footer">
-      <div class="fp-container">
-        <p>Онлайн-репетитор по физике • 7–9 классы • Индивидуальные занятия</p>
-        <p class="fp-footer-sub">
-          Запись на пробное занятие онлайн. Количество мест ограничено.
-        </p>
-      </div>
-    </footer>
-  </div>
-</body>
-</html>
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      background: radial-gradient(circle at top left, #020617, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.7);
+      font-size: 14px;
+    }
+
+    .card-soft {
+      background: rgba(15, 23, 42, 0.86);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.65);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .card p {
+      margin: 0 0 8px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    /* OFFER STACK */
+
+    .stack {
+      display: grid;
+      grid-template-columns: 2.1fr 1.3fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .stack-list > li {
+      margin-bottom: 10px;
+    }
+
+    .stack-list strong {
+      color: var(--accent);
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+
+    .stack-price {
+      border-radius: 20px;
+      padding: 18px 18px 16px;
+      background: radial-gradient(circle at top left, #0f172a, #020617);
+      border: 1px solid r
